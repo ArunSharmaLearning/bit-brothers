@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Edit</title>
+    
+    </head>
+    <body>
+        <div id="todo-table" >
+            <form method="POST"  action="/edit/<%= user._id %>">
+                
+<p>Edit </p>
+
+                <% if( user =="undefined"){ %>
+                  
+                    <input type="text" name ="fullname" placeholder="name..."    />
+                    <input type="text" name ="email" placeholder="email..."  />
+                
+                <% } else { %>
+                    <input type="text" name ="fullname" placeholder="name..." value= <%= user.name %>   />
+                    <input type="email" name ="email" placeholder="email..." value= <%= user.username %>  />
+
+
+                <% } %>               
+                    
+            
+                
+                <button type="submit">Done</button>
+            </form>
+        
+        </div>
+        <% if (locals.errors) { %>
+            <ul>
+                <% Object.values(errors).forEach(function(error){ %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+            <% } %>
+			
+			
+    </body>
+</html>
